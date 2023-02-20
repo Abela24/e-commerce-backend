@@ -7,7 +7,7 @@ const { Product, Category, Tag, ProductTag } = require('../../models');
 // get one product
 router.get('/:id', async(req, res) => {
   try {
-    const Products = await User.findByPk(req.params.id);
+    const Products = await User.findOne(req.params.id);
     if (!Products) {
       res.status(404).json({ message: 'No user with this id!' });
       return;
@@ -21,7 +21,7 @@ router.get('/:id', async(req, res) => {
 });
 
 // create new product
-router.get('/',async (req, res) => {
+router.post('/',async (req, res) => {
   try{
     const Products = await Product.findAll();
   res.status(200).json(Products);
